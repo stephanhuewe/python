@@ -66,8 +66,8 @@ for key in woerter:
 	print(key)
 
 #print value
-for value in woerter:
-    print(value)
+for key in woerter:
+    print(woerter[key])
 	
 #print all
 for item in woerter.items():
