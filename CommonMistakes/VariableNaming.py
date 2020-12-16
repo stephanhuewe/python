@@ -1,3 +1,5 @@
+x = 3 #ohoh
+
 def add(x,y):
     result = x +y
     return result
