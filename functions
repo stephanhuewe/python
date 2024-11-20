@@ -1,0 +1,91 @@
+
+# Roll the dice
+# Example Solution: Roll the Dice
+#
+# The game "Roll the dice" is a dice game for two players. Both Players roll a dice six times.
+# The first throw should be a one, the second a two and the third a three and so on.
+# If the number of points of the dice is equal to the number of throws, add the respective
+# points to the account of the particular player. The winner is the player who has the most
+# points at the end of the game.
+
+# Written by Benjamin Danzer
+
+import random
+
+def main():
+    score_computer = 0  # computer's starting score
+    score_player = 0  # player's starting score
+
+    # display welcome message
+    name_player = input("\nPlease enter your name: ")
+    print()
+    print(f"Hello {name_player}. Welcome to the game 'Roll the Dice'")
+    print("==================\n")
+
+    for counter in range(1,7):
+
+        # display beginning of round
+        print(f"Round {counter}")
+        print("--------")
+
+        # roll the dices
+        roll_computer = random.randint(1, 6)  # generate a random number between 1 and 6
+        roll_player = random.randint(1, 6)  # generate a random number between 1 and 6
+
+        # update the score of the players
+        # check if the cube-eyes of the computer are equal to the actual round
+        if roll_computer == counter:
+            score_computer = score_computer + roll_computer
+        if roll_player == counter:
+            score_player = score_player + roll_player
+
+        # display the current score
+        print(f"Computer rolls : {roll_computer}  ;  Computer score: {score_computer}")
+        print(f"{name_player} rolls: {roll_player}  ;  {name_player} score: {score_player}")
+
+        # wait for the users input
+        input("Press enter to continue ...\n")
+
+    # check who won the game
+    if score_computer == score_player:
+        print("Draw!\n\n")
+    elif score_computer > score_player:
+        print(f"I won! {score_computer} : {score_player}")
+    else:  # score_player < score_computer
+        print(f"You won!  {score_player} : {score_computer}")
+
+if __name__ == '__main__':
+    main()
+
+
+=> Methods for this DRYs
+
+
+        # update the score of the players
+        # check if the cube-eyes of the computer are equal to the actual round
+        if roll_computer == counter:
+            score_computer = score_computer + roll_computer
+        if roll_player == counter:
+            score_player = score_player + roll_player
+
+=> Functions
+
+def update_score(roll, counter, current_score):
+    """
+    Updates the score based on the roll and counter.
+
+    Parameters:
+        roll (int): The rolled value.
+        counter (int): The counter value to match.
+        current_score (int): The current score to be updated.
+
+    Returns:
+        int: The updated score.
+    """
+    if roll == counter:
+        current_score += roll
+    return current_score
+
+# Example usage
+score_computer = update_score(roll_computer, counter, score_computer)
+score_player = update_score(roll_player, counter, score_player)
