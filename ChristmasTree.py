@@ -20,3 +20,4 @@ for i in range(1, num+5):
 for i in range(1, num+3):
 	print(" "*((2*num)), end="")
 	print("* "*3)
+
